@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101323">
+  <meta name="description" content="Turn authorized long-form videos into short vertical clips with ClipGenius AI.">
+  <link rel="manifest" href="/static/manifest.json">
+  <link rel="stylesheet" href="/static/style.css">
+  <title>ClipGenius AI — Video to Shorts</title>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><span class="brand-icon">✂</span> ClipGenius <b>AI</b></a>
+  <span class="device-tag">PC + ANDROID</span>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow">AI-POWERED VIDEO REPURPOSING</div>
+    <h1>One long video.<br><span>Five standout shorts.</span></h1>
+    <p>Find engaging moments, format them vertically, and prepare clips for YouTube Shorts and Instagram Reels.</p>
+  </section>
+  <section class="panel">
+    <form id="clipForm">
+      <label for="youtube_url">1. YouTube video link</label>
+      <input id="youtube_url" name="youtube_url" type="url" placeholder="https://www.youtube.com/watch?v=..." required>
+      <div class="hint">The link identifies your source video. Upload the matching original file below.</div>
+
+      <label for="video">2. Upload the video file</label>
+      <div class="upload-box">
+        <input id="video" name="video" type="file" accept="video/mp4,video/quicktime,video/x-matroska,video/webm" required>
+        <div class="upload-icon">↑</div>
+        <strong>Choose your video</strong>
+        <span>MP4, MOV, MKV or WebM · up to 2 GB</span>
+        <div id="fileName" class="file-name">No file selected</div>
+      </div>
+
+      <label>3. Clip duration</label>
+      <div class="choices">
+        <label class="choice"><input type="radio" name="clip_mode" value="both" checked><span><b>AI decides</b><small>15–60 seconds</small></span></label>
+        <label class="choice"><input type="radio" name="clip_mode" value="short"><span><b>Short</b><small>15–30 seconds</small></span></label>
+        <label class="choice"><input type="radio" name="clip_mode" value="long"><span><b>Long</b><small>30–60 seconds</small></span></label>
+      </div>
+      <div class="rights-note"><b>Copyright reminder:</b> Only process videos you own or are authorized to edit. Cropping a video does not remove copyright, and this app cannot guarantee that a clip is copyright-free.</div>
+      <button id="submitBtn" type="submit">✦ Find my best 5 clips</button>
+      <div id="status" role="status"></div>
+    </form>
+  </section>
+  <section id="results" class="results hidden">
+    <div class="results-head"><div><div class="eyebrow">YOUR HIGHLIGHTS</div><h2>Five clips, ready to review</h2></div><a id="zipLink" class="download-all" href="#">Download all ↓</a></div>
+    <div id="clipGrid" class="clip-grid"></div>
+  </section>
+  <section class="steps">
+    <h2>How it works</h2>
+    <div class="step-grid">
+      <div><i>01</i><b>Upload</b><p>Add your YouTube reference link and authorized video file.</p></div>
+      <div><i>02</i><b>Understand</b><p>AI transcribes speech and scores promising moments.</p></div>
+      <div><i>03</i><b>Export</b><p>FFmpeg creates vertical MP4 clips you can review and post.</p></div>
+    </div>
+  </section>
+</main>
+<footer>ClipGenius AI · Your videos are processed on the server running this app.</footer>
+<script src="/static/app.js"></script>
+<script>
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/static/sw.js');
+</script>
+</body></html>
